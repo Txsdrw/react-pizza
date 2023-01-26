@@ -1,6 +1,5 @@
-
 export function Sort() {
-    return(
+    return (
         <div className="sort">
             <div className="sort__label">
                 <svg
