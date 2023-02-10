@@ -3,10 +3,12 @@ import "./scss/app.scss";
 import { Header } from "./components/header";
 import { Categories } from "./components/categories";
 import { Sort } from "./components/sort";
-import { PizzaBlock } from "./components/pizza-block";
+import PizzaBlock from "./components/PizzaBlock";
+import Placeholder from "./components/PizzaBlock/Placeholder";
 
 function App() {
   const [items, setItems] = React.useState([]);
+  const [isLoading, setIsloading] = React.useState(true);
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -15,6 +17,7 @@ function App() {
       );
       let data = await res.json();
       setItems(data);
+      setIsloading((prevState) => !prevState);
     };
     fetchData();
   }, []);
@@ -31,9 +34,13 @@ function App() {
             </div>
             <h2 className="content__title">Все пиццы</h2>
             <div className="content__items">
-              {items.map((item) => (
-                <PizzaBlock key={item.id} image={item.imageUrl} {...item} />
-              ))}
+              {isLoading
+                ? [...new Array(6)].map((_, index) => (
+                    <Placeholder key={index} />
+                  ))
+                : items.map((item) => (
+                    <PizzaBlock key={item.id} image={item.imageUrl} {...item} />
+                  ))}
             </div>
           </div>
         </div>
