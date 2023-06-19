@@ -1,10 +1,12 @@
 import { useState, useRef, useEffect } from "react";
 
 export const Sort = () => {
-  const sortType = ["популярности", "цене", "алфавиту"];
-  const [activeSort, setActiveSort] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSort, setActiveSort] = useState(0);
+  const sortTypes = ["популярности", "цене", "алфавиту"];
+
   const popupRef = useRef(null);
+  const sortType = sortTypes[activeSort]
 
   const handleClick = (index) => {
     setActiveSort(index);
@@ -47,12 +49,12 @@ export const Sort = () => {
           />
         </svg>
         <b>Сортировка по:</b>
-        <span onClick={(e) => handlePopup(e)}>{sortType[activeSort]}</span>
+        <span onClick={handlePopup}>{sortType}</span>
       </div>
       {isOpen && (
         <div ref={popupRef} className="sort__popup">
           <ul>
-            {sortType.map((type, index) => (
+            {sortTypes.map((type, index) => (
               <li
                 key={index}
                 onClick={() => handleClick(index)}
