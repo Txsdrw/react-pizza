@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 
-export const PizzaBlock = ({ imageUrl, title, sizes, types, price }) => {
+export const PizzaBlock = ({ imageUrl, name, sizes, types, price }) => {
   const [pizzaSize, setPizzaSize] = useState(0);
   const [pizzaType, setPizzaType] = useState(0);
   const pizzaTypes = ["тонкое", "традиционное"];
@@ -16,7 +16,7 @@ export const PizzaBlock = ({ imageUrl, title, sizes, types, price }) => {
   return (
     <div className="pizza-block">
       <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
-      <h4 className="pizza-block__title">{title}</h4>
+      <h4 className="pizza-block__title">{name}</h4>
       <div className="pizza-block__selector">
         <ul>
           {types.map((type, typeIndex) => (
