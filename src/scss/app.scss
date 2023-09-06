@@ -1,7 +1,7 @@
-@import './variables';
-@import './libs/normalize';
+@import "./variables";
+@import "./libs/normalize";
 
-@import './components/all';
+@import "./components/all";
 
 body {
   background-color: $background;
@@ -24,11 +24,11 @@ body {
   }
 
   &__items {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(2, 1fr);
-      grid-column-gap: 40px;
-      grid-row-gap: 40px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 40px;
+    grid-row-gap: 40px;
   }
 
   &__top {
