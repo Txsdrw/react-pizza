@@ -8,6 +8,16 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @media (max-width: 1400px) {
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 20px;
+
+      @media (max-width: 450px) {
+        text-align: center;
+      }
+    }
   }
 
   &__logo {

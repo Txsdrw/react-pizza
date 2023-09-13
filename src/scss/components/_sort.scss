@@ -1,4 +1,4 @@
-@import '../variables';
+@import "../variables";
 
 .sort {
   position: relative;
@@ -12,6 +12,10 @@
 
     b {
       margin-right: 8px;
+
+      @media (max-width: 420px) {
+        display: none;
+      }
     }
 
     span {

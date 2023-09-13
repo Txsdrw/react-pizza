@@ -1,16 +1,18 @@
 @import '../variables';
 
 .pizza-block {
-  width: 280px;
+  min-width: 100px;
   text-align: center;
   margin-bottom: 65px;
 
-  &:not(:nth-of-type(n)) {
-    margin-right: 35px;
+  &-wrapper {
+    display: flex;
+    justify-content: center;
   }
 
   &__image {
-    width: 260px;
+    max-width: 260px;
+    width: 100%;
   }
 
   &__title {
@@ -25,7 +27,14 @@
     background-color: #f3f3f3;
     border-radius: 10px;
     flex-direction: column;
+    margin: 0 auto;
     padding: 6px;
+
+    @media (max-width: 420px) {
+     width: 200px;
+     margin: 0 auto;
+    }
+
 
     ul {
       display: flex;
@@ -33,7 +42,13 @@
 
       &:first-of-type {
         margin-bottom: 6px;
+
+        @media (max-width: 420px) {
+          flex-direction: column;
+        }
       }
+
+ 
 
       li {
         padding: 8px;
@@ -58,6 +73,11 @@
     align-items: center;
     justify-content: space-between;
     margin-top: 20px;
+
+      @media (max-width: 420px) {
+        flex-direction: column;;
+        row-gap: 20px;
+      }
   }
 
   &__price {
