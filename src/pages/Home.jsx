@@ -10,6 +10,8 @@ import { PIZZAS_API } from "../core/api/axios";
 export const Home = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [activeSort, setActiveSort] = useState(0);
+
 
   useEffect(() => {
     PIZZAS_API({
@@ -28,7 +30,7 @@ export const Home = () => {
     <>
       <div className="content__top">
         <Categories />
-        <Sort />
+        <Sort  activeSortId={activeSort} sortChangeValue={(sortId) => setActiveSort(sortId)}/>
       </div>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">

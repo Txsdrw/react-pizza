@@ -9,6 +9,7 @@ import {Cart} from "../pages/Cart";
 
 export const App = () => {
 
+
     return (
         <div className="wrapper">
             <Header/>

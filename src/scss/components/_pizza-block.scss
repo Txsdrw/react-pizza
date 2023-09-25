@@ -1,4 +1,4 @@
-@import '../variables';
+@import "../variables";
 
 .pizza-block {
   min-width: 100px;
@@ -31,10 +31,9 @@
     padding: 6px;
 
     @media (max-width: 420px) {
-     width: 200px;
-     margin: 0 auto;
+      width: 200px;
+      margin: 0 auto;
     }
-
 
     ul {
       display: flex;
@@ -47,8 +46,6 @@
           flex-direction: column;
         }
       }
-
- 
 
       li {
         padding: 8px;
@@ -74,10 +71,10 @@
     justify-content: space-between;
     margin-top: 20px;
 
-      @media (max-width: 420px) {
-        flex-direction: column;;
-        row-gap: 20px;
-      }
+    @media (max-width: 420px) {
+      flex-direction: column;
+      row-gap: 20px;
+    }
   }
 
   &__price {

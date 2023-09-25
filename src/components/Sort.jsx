@@ -1,15 +1,13 @@
 import { useState, useRef, useEffect } from "react";
 
-export const Sort = () => {
+export const Sort = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeSort, setActiveSort] = useState(0);
   const sortTypes = ["популярности", "цене", "алфавиту"];
 
   const popupRef = useRef(null);
-  const sortType = sortTypes[activeSort]
+  const sortType = sortTypes[props.activeSortId]
 
-  const handleClick = (index) => {
-    setActiveSort(index);
+  const handleClick = () => {
     setIsOpen(false);
   };
 
@@ -57,8 +55,8 @@ export const Sort = () => {
             {sortTypes.map((type, index) => (
               <li
                 key={index}
-                onClick={() => handleClick(index)}
-                className={index === activeSort ? "active" : ""}
+                onClick={() => props.sortChangeValue(index)}
+                className={index === props.activeSortId ? "active" : ""}
               >
                 {type}
               </li>
