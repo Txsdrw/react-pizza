@@ -5,7 +5,7 @@ export const Sort = (props) => {
   const sortTypes = ["популярности", "цене", "алфавиту"];
 
   const popupRef = useRef(null);
-  const sortType = sortTypes[props.activeSortId]
+  const sortType = sortTypes[props.activeSort]
 
   const handleClick = () => {
     setIsOpen(false);
