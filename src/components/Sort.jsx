@@ -2,10 +2,13 @@ import { useState, useRef, useEffect } from "react";
 
 export const Sort = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const sortTypes = ["популярности", "цене", "алфавиту"];
+  const sortTypes = [
+    { name: "популярности", sortType: "rating" },
+    { name: "цене", sortType: "price" },
+    { name: "алфавиту", sortType: "title" },
+  ];
 
   const popupRef = useRef(null);
-  const sortType = sortTypes[props.activeSort];
 
   const handleClick = (id) => {
     props.sortChangeValue(id);
@@ -31,6 +34,7 @@ export const Sort = (props) => {
   const handlePopup = () => {
     setIsOpen((prev) => !prev);
   };
+  console.log(props)
 
   return (
     <div className="sort">
@@ -48,7 +52,7 @@ export const Sort = (props) => {
           />
         </svg>
         <b>Сортировка по:</b>
-        <span onClick={handlePopup}>{sortType}</span>
+        <span onClick={handlePopup}>{props.activeSort.name}</span>
       </div>
       {isOpen && (
         <div ref={popupRef} className="sort__popup">
@@ -56,10 +60,10 @@ export const Sort = (props) => {
             {sortTypes.map((type, index) => (
               <li
                 key={index}
-                onClick={() => handleClick(index)}
-                className={index === props.activeSortId ? "active" : ""}
+                onClick={() => handleClick(type)}
+                className={type.sortType === props.activeSort.sortType ? "active" : ""}
               >
-                {type}
+                {type.name}
               </li>
             ))}
           </ul>

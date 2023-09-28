@@ -10,15 +10,14 @@ import { PIZZAS_API } from "../core/api/axios";
 export const Home = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [activeSortId, setActiveSortId] = useState(0);
+  const [activeSortType, setActiveSortType] = useState({name: 'Популярности', sortType: 'rating'});
   const [activeCategoryId, setActiveCategoryId] = useState(0);
 
-  const sortParam = ["rating", "price", "title"];
 
   useEffect(() => {
     setIsLoading(true);
     PIZZAS_API({
-      url: `/items?orderBy=${sortParam[activeSortId]}&category=${
+      url: `/items?orderBy=${activeSortType.sortType}&category=${
         activeCategoryId > 0 ? activeCategoryId : ""
       }`,
       method: "GET",
@@ -27,7 +26,7 @@ export const Home = () => {
       setIsLoading(false);
     });
     window.scrollTo(0, 0);
-  }, [activeSortId, activeCategoryId]);
+  }, [activeSortType, activeCategoryId]);
 
   if (!data) return null;
 
@@ -39,8 +38,8 @@ export const Home = () => {
           setActiveCategory={(categoryId) => setActiveCategoryId(categoryId)}
         />
         <Sort
-          activeSort={activeSortId}
-          sortChangeValue={(sortId) => setActiveSortId(sortId)}
+          activeSort={activeSortType}
+          sortChangeValue={(sortType) => setActiveSortType(sortType)}
         />
       </div>
       <h2 className="content__title">Все пиццы</h2>
