@@ -10,16 +10,20 @@ import { PIZZAS_API } from "../core/api/axios";
 export const Home = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [activeSortType, setActiveSortType] = useState({name: 'Популярности', sortType: 'rating'});
+  const [activeSortType, setActiveSortType] = useState({
+    name: "Популярности",
+    sortType: "rating",
+  });
   const [activeCategoryId, setActiveCategoryId] = useState(0);
 
-
   useEffect(() => {
+    const sortBy = activeSortType.sortType.replace("-", "");
+    const order = activeSortType.sortType.includes("-") ? "desc" : "asc";
+    const category = activeCategoryId > 0 ? activeCategoryId : "";
+
     setIsLoading(true);
     PIZZAS_API({
-      url: `/items?orderBy=${activeSortType.sortType}&category=${
-        activeCategoryId > 0 ? activeCategoryId : ""
-      }`,
+      url: `/items?sortBy=${sortBy}&order=${order}&category=${category}`,
       method: "GET",
     }).then((res) => {
       setData(res.data);

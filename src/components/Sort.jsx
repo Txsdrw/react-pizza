@@ -3,8 +3,9 @@ import { useState, useRef, useEffect } from "react";
 export const Sort = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const sortTypes = [
-    { name: "популярности", sortType: "rating" },
-    { name: "цене", sortType: "price" },
+    { name: "популярности", sortType: "-rating" },
+    { name: "возрастанию цены", sortType: "price" },
+    { name: "убыванию цены", sortType: "-price" },
     { name: "алфавиту", sortType: "title" },
   ];
 
