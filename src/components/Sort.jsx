@@ -5,9 +5,10 @@ export const Sort = (props) => {
   const sortTypes = ["популярности", "цене", "алфавиту"];
 
   const popupRef = useRef(null);
-  const sortType = sortTypes[props.activeSort]
+  const sortType = sortTypes[props.activeSort];
 
-  const handleClick = () => {
+  const handleClick = (id) => {
+    props.sortChangeValue(id);
     setIsOpen(false);
   };
 
@@ -55,7 +56,7 @@ export const Sort = (props) => {
             {sortTypes.map((type, index) => (
               <li
                 key={index}
-                onClick={() => props.sortChangeValue(index)}
+                onClick={() => handleClick(index)}
                 className={index === props.activeSortId ? "active" : ""}
               >
                 {type}

@@ -16,15 +16,18 @@ export const Home = () => {
   const sortParam = ["rating", "price", "title"];
 
   useEffect(() => {
+    setIsLoading(true);
     PIZZAS_API({
-      url: `/items?orderBy=${sortParam[activeSortId]}`,
+      url: `/items?orderBy=${sortParam[activeSortId]}&category=${
+        activeCategoryId > 0 ? activeCategoryId : ""
+      }`,
       method: "GET",
     }).then((res) => {
       setData(res.data);
       setIsLoading(false);
     });
     window.scrollTo(0, 0);
-  }, [activeSortId]);
+  }, [activeSortId, activeCategoryId]);
 
   if (!data) return null;
 

@@ -1,8 +1,14 @@
 import { useState } from "react";
 
-const categories = ["Все", "Мясные", "Вегетарианская", "Гриль", "Острые", "Закрытые"];
-
-export const Categories = ({activeCategory, setActiveCategory}) => {
+export const Categories = ({ activeCategory, setActiveCategory }) => {
+  const categories = [
+    "Все",
+    "Мясные",
+    "Вегетарианская",
+    "Гриль",
+    "Острые",
+    "Закрытые",
+  ];
 
   return (
     <div className="categories">
