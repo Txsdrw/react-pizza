@@ -7,7 +7,7 @@ import { PizzaBlock } from "../components/PizzaBlock/PizzaBlock";
 
 import { PIZZAS_API } from "../core/api/axios";
 
-export const Home = () => {
+export const Home = ({ searchValue }) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [activeSortType, setActiveSortType] = useState({
@@ -50,7 +50,11 @@ export const Home = () => {
       <div className="content__items">
         {isLoading
           ? [...new Array(9)].map((_, index) => <Skeleton key={index} />)
-          : data.map((pizza) => <PizzaBlock key={pizza.id} {...pizza} />)}
+          : data
+              .filter((pizza) =>
+                pizza.title.toLowerCase().includes(searchValue.toLowerCase())
+              )
+              .map((pizza) => <PizzaBlock key={pizza.id} {...pizza} />)}
       </div>
     </>
   );
