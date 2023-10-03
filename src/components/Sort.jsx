@@ -35,7 +35,6 @@ export const Sort = (props) => {
   const handlePopup = () => {
     setIsOpen((prev) => !prev);
   };
-  console.log(props)
 
   return (
     <div className="sort">
